@@ -103,7 +103,7 @@ impl Matrix<c64> {
         let mut b = Matrix::<c64>::identity(n as usize);
 
         unsafe {
-            zgelss_(
+            zgelss_( // encut >= 700 eV 时报错。
                 &n,
                 &n,
                 &nrhs,
