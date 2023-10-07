@@ -61,7 +61,10 @@ pub struct MPI_Status {
     mpi_error: c_int,
 }
 
-#[link(name = "mpich", kind = "dylib")]
+//#[link(name = "mpich", kind = "dylib")]
+//Use intel mpi
+#[cfg(target_os = "linux")]
+#[link(name = "mpi", kind = "dylib")]
 extern "C" {
     pub fn MPI_Init(argc: *const c_int, argv: *const c_char) -> c_int;
 
